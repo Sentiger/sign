@@ -4,24 +4,18 @@
 
 ## 私有源安装
 ```javascript
-"repositories": [
+{
+  "repositories": [
     {
-      "type": "package",
-      "package": {
-        "name": "yiche/sign",
-        "version": "0.0.1",
-        "type": "package",
-        "source": {
-          "url": "https://code.lrwanche.com/shiwh/sign.git",
-          "type": "git",
-          "reference": "0.0.1"
-        }
-      }
+      "type": "vcs",
+      "url": "https://code.lrwanche.com/shiwh/sign.git"
     }
   ],
   "require": {
-    "yiche/sign":"*"
+    "yiche/sign": "v1.0"
   }
+}
+
 ```
 
 ## 普通使用
