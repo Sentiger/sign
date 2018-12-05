@@ -25,6 +25,12 @@ class Sign
         $this->appKey       = $appKey;
         $this->appSecretKey = $appSecretKey;
         $this->expireTime   = $expireTime;
+        if(empty($this->appKey)) {
+            throw new InvalidArgumentException('app_key不能为空');
+        }
+        if(empty($this->appSecretKey)) {
+            throw new InvalidArgumentException('app_sercert_key不能为空');
+        }
     }
 
     /**
