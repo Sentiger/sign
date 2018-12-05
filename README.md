@@ -4,39 +4,98 @@
 
 ## 私有源安装
 ```javascript
-{
-  "repositories": [
+"repositories": [
     {
-      "type": "vcs",
-      "url": "https://code.lrwanche.com/shiwh/ali-dy.git"
+      "type": "package",
+      "package": {
+        "name": "yiche/sign",
+        "version": "0.0.1",
+        "type": "package",
+        "source": {
+          "url": "https://code.lrwanche.com/shiwh/sign.git",
+          "type": "git",
+          "reference": "0.0.1"
+        }
+      }
     }
   ],
   "require": {
-    "sentiger/ali-dy": "dev-master"
+    "yiche/sign":"*"
   }
-}
 ```
 
-
-## 配置
-查看阿里大鱼文档
-
-## 使用
+## 普通使用
 ```php
-$config    = [
-    'accessKeyId'     => 'xxxx',
-    'accessKeySecret' => 'xxx',
-    'signName'        => 'xxx',
-    'templateCode'    => 'xxx',
+
+include __DIR__ . '/vendor/autoload.php';
+
+$appKey       = '0123456';
+$appSecretKey = '4564877211';
+$expireTime   = 0;
+$signClient   = new \yiche\Sign\Sign($appKey, $appSecretKey, $expireTime);
+
+$data    = [
+    'client_time' => time(),
+    'name'        => 'Sentiger',
+    'age'         => '18'
 ];
-$smsClient = new \Sentiger\AliDy\SMSDy($config);
 
-$res = $smsClient->sendSMS('17602191131', [
-    'TemplateParam' => [
-        // 这个里面是短信模板中的变量，根据实际情况设置变量名称
-        'code' => 'xx'
+// 生成签名
+$signStr = $signClient->createSign($data);
+
+// 检测签名
+
+$checkData         = $data;
+$checkData['sign'] = $signStr;
+try {
+    $signClient->checkSign($checkData);
+} catch (\Exception $e) {
+    echo $e->getMessage();
+}
+
+
+print_r($signStr);
+```
+
+## 在laravel框架中通过依赖注入使用
+- 配置
+
+> config/services.php
+
+```php
+...
+
+'sassyc' => [
+        'app_key'        => '123456',
+        'app_secret_key' => '11114fdsfadas',
+        'expire_time'    => 0,  //服务端验证签名过期时间0表示不过期
     ]
-]);
+...
 
-print_r($res);
+```
+
+- 通过依赖注入使用
+
+```php
+Route::get('sign', function (\yiche\Sign\Sign $signClient) {
+    $data = [
+        'client_time' => 1543995526,
+        'name'        => '张三',
+        'age'         => '12'
+    ];
+    // 生成签名
+    $signStr = $signClient->createSign($data);
+
+    // curl传
+    $checkData = array_merge($data, [
+        'sign' => $signStr
+    ]);
+
+    // 检测签名
+    $signClient->checkSign($checkData);
+
+    return $signStr;
+
+});
+
 ```
