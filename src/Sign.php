@@ -1,9 +1,9 @@
 <?php
 
-namespace Sentiger\Sign;
+namespace Yiche\Sign;
 
-use Sentiger\Sign\Exceptions\InvalidArgumentException;
-use Sentiger\Sign\Exceptions\SignException;
+use Yiche\Sign\Exceptions\InvalidArgumentException;
+use Yiche\Sign\Exceptions\SignException;
 
 class Sign
 {

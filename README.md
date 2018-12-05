@@ -1,6 +1,6 @@
 # 微服务签名算法
 ## package源安装
-> `composer require sentiger/sign -vvv` 暂时没有发布
+> `composer require ` 暂时没有发布
 
 ## 私有源安装
 ```javascript

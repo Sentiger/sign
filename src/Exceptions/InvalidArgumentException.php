@@ -1,6 +1,6 @@
 <?php
 
-namespace Sentiger\Sign\Exceptions;
+namespace Yiche\Sign\Exceptions;
 
 class InvalidArgumentException extends Exception
 {

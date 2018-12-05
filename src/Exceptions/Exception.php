@@ -1,6 +1,6 @@
 <?php
 
-namespace Sentiger\Sign\Exceptions;
+namespace Yiche\Sign\Exceptions;
 
 class Exception extends \Exception
 {

@@ -1,5 +1,5 @@
 {
-    "name": "sentiger/sign",
+    "name": "yiche/sign",
     "authors": [
         {
             "name": "Sentiger",
@@ -8,14 +8,14 @@
     ],
     "autoload": {
         "psr-4": {
-            "Sentiger\\Sign\\": "src/"
+            "Yiche\\Sign\\": "src/"
         }
     },
     "require": {},
     "extra": {
         "laravel": {
             "providers": [
-                "Sentiger\\Sign\\ServiceProvider"
+                "Yiche\\Sign\\ServiceProvider"
             ]
         }
     }

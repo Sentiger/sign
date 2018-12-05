@@ -1,6 +1,6 @@
 <?php
 
-namespace Sentiger\Sign;
+namespace Yiche\Sign;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
