@@ -1,20 +1,9 @@
 # 微服务签名算法
 ## package源安装
-> `composer require ` 暂时没有发布
+> `composer require yiche/sign` 
 
 ## 私有源安装
 ```javascript
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://code.lrwanche.com/shiwh/sign.git"
-    }
-  ],
-  "require": {
-    "yiche/sign": "v1.0"
-  }
-}
 
 ```
 
